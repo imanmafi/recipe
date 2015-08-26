@@ -1,0 +1,48 @@
+<h1><a href="/">Recipe Box</a></h1>
+
+<%= @recipe.name() %>
+
+<form action="/recipe/<%= @recipe.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="ingredients">List your ingredients:</label>
+  <input type="text" name="ingredients">
+
+  <label for="instructions">Write out instructions:</label>
+  <input type="text" size="100" name="instructions">
+  <button type="submit">Add</button>
+</form>
+
+<h3>Instructions</h3>
+
+<%= @recipe.instructions %><br>
+
+<h3>Ingredients</h3>
+<%= @recipe.ingredients %><br>
+
+<h3>Categories</h3>
+
+<% @recipe.categories.each do |category| %>
+<%= category.name %>
+<% end %>
+<br><br>
+
+
+<form action="/recipe/<%= @recipe.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="rating">Rate This Recipe</label>
+  <input id="rating" name="rating" type="text">
+  <button type="submit">Rate</button>
+</form>
+
+<ul>
+  <li><%= @recipe.rating %></li>
+</ul>
+
+<form action="/recipe/<%= @recipe.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+        <button type="submit">Delete recipe</button>
+</form>
+<br>
+
+<a href="/recipe/<%= @recipe.id %>/edit">Edit This Recipe</a>

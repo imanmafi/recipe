@@ -1,0 +1,12 @@
+<h1><a href="/">Recipe Box</a></h1>
+
+<%= @category.name() %>
+
+<form action="/category/<%= @category.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit">Delete category</button>
+</form>
+
+<% @category.recipes.each do |recipe| %>
+<%= recipe.name %>
+<% end %>

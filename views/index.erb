@@ -1,0 +1,37 @@
+<h1><a href="/">Recipe Box</a></h1><br>
+<form action="/index" method="post">
+  <label for="recipe_name">Add Recipe</label>
+  <input type="text" name="recipe_name"><br><br>
+  <label for="category_name">Add Category</label>
+  <input type="text" name="category_name">
+
+  <button type="submit">Add</button>
+</form>
+
+
+    <h3>Recipes</h3>
+    <% @recipes.each do |recipe| %>
+    <a href='/recipe/<%= recipe.id %>'><%= recipe.name %></a><br>
+    <% end %>
+
+    <h3>Categories</h3>
+    <% @categories.each do |category| %>
+    <a href="/category/<%= category.id %>"><%= category.name %></a><br>
+    <% end %>
+
+<h3>  QUICHE</h3>
+<% @recipes.quiche.each do |recipe| %>
+  <%= recipe.name %><br>
+  <% end %>
+
+<h3>  BEETS</h3>
+<% @recipes.beets.each do |recipe| %>
+<%= recipe.name %><br>
+<%= recipe.ingredients %><br> <br>
+
+<% end %>
+
+<h3>  ASCENDING</h3>
+<% @recipes.order("name ASC").each do |recipe| %>
+  <%= recipe.name %><br>
+  <% end %>
